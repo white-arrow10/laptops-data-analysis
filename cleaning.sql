@@ -5,7 +5,7 @@ SELECT * FROM laptops_backup;
 -- 1.) Number of rows -
 SELECT COUNT(*) FROM laptops_backup;
 
--- 2.) check memory cconsumption by data - 
+-- 2.) check memory consumption by data - 
 
 SELECT `DATA_LENGTH`/1024 AS 'data occupied in KBs'
 FROM information_schema.TABLES
@@ -61,3 +61,10 @@ SELECT COUNT(*) FROM laptops_backup;
 
 -- 5.) drop duplicates - 
 
+
+SELECT *, COUNT(*) AS total_count
+FROM laptops_backup
+GROUP BY Company, TypeName, Inches, ScreenResolution, Cpu, Ram, Memory, Gpu, OpSys, Weight, Price
+HAVING total_count > 1;
+
+SELECT * FROM laptops_backup;
